@@ -12,6 +12,7 @@ class Graph {
   E() {
     return this.numE;
   }
+
   addEdge(v, w) {
     if (!this.adj[v].includes(w) && !this.adj[w].includes(v)) {
       this.adj[v].push(w);
