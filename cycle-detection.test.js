@@ -1,7 +1,7 @@
 const Graph = require('./graph');
 const CycleDetection = require('./cycle-detection');
 
-test('test has Cycle()', () => {
+test('test hasCycle()', () => {
   const graph = new Graph(13);
   graph.addEdge(0, 1);
   graph.addEdge(0, 2);
