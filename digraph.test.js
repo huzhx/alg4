@@ -36,3 +36,14 @@ test('test reverse()', () => {
   const expected = digraph2.reverse();
   expect(result).toEqual(expected);
 });
+
+test('test getAdjs(v)', () => {
+  const digraph = new Digraph(5);
+  digraph.addEdge(3, 2);
+  const result = digraph.getAdjs(3);
+  const expected = [2];
+  expect(result).toEqual(expected);
+  const result2 = digraph.getAdjs(2);
+  const expected2 = [];
+  expect(result2).toEqual(expected2);
+});

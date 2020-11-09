@@ -60,6 +60,10 @@ class Digraph {
     }
     return r;
   }
+
+  getAdjs(v) {
+    return this.adj_[v];
+  }
 }
 
 module.exports = Digraph;
