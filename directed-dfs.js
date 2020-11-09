@@ -1,3 +1,6 @@
+/**
+ * Given a digraph and a set of source vertices, and find out which vertices can be reached
+ */
 class DirectedDFS {
   /** Track which vertex has been visited
    * @private @const {!Array<boolean>} */
