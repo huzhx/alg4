@@ -15,7 +15,34 @@ const search = (txt, pat) => {
     }
     if (j === patLen) return i; // found
   }
-  return patLen; // not found
+  return txtLen; // not found
 };
 
-module.exports = search;
+const kmpSearch = (txt, pat) => {
+  // build dfa from pat
+  const txtLen = txt.length;
+  const patLen = pat.length;
+  const charsInPat = Array.from(new Set(pat.split('')));
+  const dfa = {};
+  dfa[pat[0]] = dfa[pat[0]] || new Array(patLen).fill(0);
+  dfa[pat[0]][0] = 1;
+  for (let x = 0, j = 1; j < patLen; j++) {
+    for (let char of charsInPat) {
+      dfa[char] = dfa[char] || new Array(patLen).fill(0);
+      dfa[char][j] = dfa[char][x];
+    }
+    dfa[pat[j]][j] = j + 1;
+    x = dfa[pat[j]][x];
+  }
+  let i, j;
+  for (i = 0, j = 0; i < txtLen && j < patLen; i++) {
+    if (typeof dfa[txt[i]] !== 'undefined') {
+      j = dfa[txt[i]][j];
+    }
+  }
+  if (j === patLen) return i - patLen;
+  // found
+  else return txtLen; // not found
+};
+
+module.exports = { search, kmpSearch };
